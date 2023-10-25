@@ -13,10 +13,18 @@ services:
       - PLEX_CLAIM=${PLEX_CLAIM}
       - VERSION=latest
     volumes:
-      - ./config:/config
-      bind:
-        create_host_path: true
-      - /nfs/plex_share:/data/media
+#      - ./config:/config
+    - type: bind
+        source: ./config
+        target: /config
+        bind:
+          create_host_path: true
+#      - /nfs/plex_share:/data/media
+    - type: bind
+        source: ${MEDIA_LOCATION}
+        target: /data/media
+        bind:
+          create_host_path: false
     devices:
 # intel Hardware accelerator
       - /dev/dri:/dev/dri
