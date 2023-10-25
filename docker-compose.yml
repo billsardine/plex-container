@@ -14,13 +14,13 @@ services:
       - VERSION=latest
     volumes:
 #      - ./config:/config
-    - type: bind
+      - type: bind
         source: ./config
         target: /config
         bind:
           create_host_path: true
 #      - /nfs/plex_share:/data/media
-    - type: bind
+      - type: bind
         source: ${MEDIA_LOCATION}
         target: /data/media
         bind:
