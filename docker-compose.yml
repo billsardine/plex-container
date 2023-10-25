@@ -15,10 +15,10 @@ services:
     volumes:
 #      - ./config:/config
       - type: bind
-        source: ./config
-        target: /config
         bind:
           create_host_path: true
+        source: ./config
+        target: /config
 #      - /nfs/plex_share:/data/media
       - type: bind
         source: ${MEDIA_LOCATION}
