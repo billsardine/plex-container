@@ -2,7 +2,7 @@ version: "3"
 services:
   plex:
     image: linuxserver/plex
-    container_name: plex
+ #   container_name: plex
     network_mode: host
     environment:
 # Synology config
