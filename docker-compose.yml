@@ -1,9 +1,15 @@
-version: "3"
+version: "3.8"
 services:
   plex:
     image: linuxserver/plex
  #   container_name: plex
     network_mode: host
+# Config for Nvidia GPU  
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
     environment:
 # Synology config
 #      - PUID=1036
@@ -11,7 +17,10 @@ services:
       - TZ=America/New_York
       - UMASK_SET=022 #optional
       - PLEX_CLAIM=${PLEX_CLAIM}
-      - VERSION=latest
+      - VERSION=docker
+# Config for Nvidia GPU      
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
     volumes:
       - type: bind
         source: ./config
